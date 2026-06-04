@@ -33,6 +33,47 @@ with st.expander("Clique para inserir as variáveis VXs"):
         with cols[col_idx]:
             v_inputs[f'V{i}'] = st.number_input(f'V{i}', value=0.0, format="%.4f")
 
+#- Para apresentação, preferimos fazer um preenchimento automatico
+st.markdown("Teste rapido:")
+col_btn1, col_btn2, col_btn3 = st.columns(3)
+
+with col_btn1:
+    if st.button("Preencher Exemplo Legítimo"):
+        # Injeta valores normais considerados pelo modelo.
+        for i in range(1, 29):
+            st.session_state[f'v{i}_input'] = 0.05
+
+with col_btn2:
+    if st.button("Preencher Exemplo de Fraude"):
+        # Injeta valores anormais considerados pelo modelo.
+        for i in range(1, 29):
+            st.session_state[f'v{i}_input'] = -5.5 if i % 2 == 0 else 6.2
+
+with col_btn3:
+    if st.button("Limpar Dados"):
+        # Zera todos os valores
+        for i in range(1, 29):
+            st.session_state[f'v{i}_input'] = 0.0
+
+#- Gerando os 28 campos
+with st.expander("Clique para visualizar ou editar as variáveis VXs"):
+    cols = st.columns(4)
+    v_inputs = {}
+    for i in range(1, 29):
+        col_idx = (i - 1) % 4
+        
+        # Se a variável ainda não existe na memória, cria ela valendo 0.0
+        if f'v{i}_input' not in st.session_state:
+            st.session_state[f'v{i}_input'] = 0.0
+            
+        with cols[col_idx]:
+            # O parâmetro 'key' é o que conecta o campo visual à memória do Streamlit
+            v_inputs[f'V{i}'] = st.number_input(
+                f'V{i}', 
+                format="%.4f", 
+                key=f'v{i}_input'
+            )
+
 #- Executar Predição
 st.markdown("---")
 if st.button("Executar Predição"):
