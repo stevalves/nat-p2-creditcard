@@ -32,10 +32,16 @@ with col_btn1:
             st.session_state[f'v{i}_input'] = 0.05
 
 with col_btn2:
-    if st.button("Preencher Exemplo de Fraude"):
-        # Injeta valores anormais considerados pelo modelo.
+    if st.button("🚨 Preencher Exemplo de Fraude"):
+        # Injeta uma anomalia considerada pelo modelo, para simular uma fraude.
         for i in range(1, 29):
-            st.session_state[f'v{i}_input'] = -5.5 if i % 2 == 0 else 6.2
+            st.session_state[f'v{i}_input'] = 0.0
+        
+        st.session_state['v4_input'] = 11.5
+        st.session_state['v10_input'] = -22.3
+        st.session_state['v12_input'] = -18.6
+        st.session_state['v14_input'] = -19.2
+
 
 with col_btn3:
     if st.button("Limpar Dados"):
