@@ -32,15 +32,35 @@ with col_btn1:
             st.session_state[f'v{i}_input'] = 0.05
 
 with col_btn2:
-    if st.button("🚨 Preencher Exemplo de Fraude"):
-        # Injeta uma anomalia considerada pelo modelo, para simular uma fraude.
-        for i in range(1, 29):
-            st.session_state[f'v{i}_input'] = 0.0
-        
-        st.session_state['v4_input'] = 11.5
-        st.session_state['v10_input'] = -22.3
-        st.session_state['v12_input'] = -18.6
-        st.session_state['v14_input'] = -19.2
+    if st.button("Preencher Exemplo de Fraude"):
+        st.session_state['v1_input'] = -4.28
+        st.session_state['v2_input'] = 4.14
+        st.session_state['v3_input'] = -8.54
+        st.session_state['v4_input'] = 7.15
+        st.session_state['v5_input'] = -3.75
+        st.session_state['v6_input'] = -2.08
+        st.session_state['v7_input'] = -6.46
+        st.session_state['v8_input'] = 3.40
+        st.session_state['v9_input'] = -3.81
+        st.session_state['v10_input'] = -8.11
+        st.session_state['v11_input'] = 6.13
+        st.session_state['v12_input'] = -10.59
+        st.session_state['v13_input'] = -0.56
+        st.session_state['v14_input'] = -11.08
+        st.session_state['v15_input'] = -0.36
+        st.session_state['v16_input'] = -5.99
+        st.session_state['v17_input'] = -11.66
+        st.session_state['v18_input'] = -4.01
+        st.session_state['v19_input'] = 1.30
+        st.session_state['v20_input'] = 1.45
+        st.session_state['v21_input'] = 1.63
+        st.session_state['v22_input'] = -0.05
+        st.session_state['v23_input'] = -0.42
+        st.session_state['v24_input'] = 0.05
+        st.session_state['v25_input'] = 0.35
+        st.session_state['v26_input'] = 0.70
+        st.session_state['v27_input'] = 1.83
+        st.session_state['v28_input'] = 0.77
 
 
 with col_btn3:
