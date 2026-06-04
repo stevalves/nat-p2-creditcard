@@ -19,11 +19,7 @@ modelo = carregar_modelo()
 #- Entradas
 st.header("Dados da Transação")
 
-col1, col2 = st.columns(2)
-with col1:
-    time_val = st.number_input("Tempo desde a primeira transação (Time)", min_value=0.0, value=0.0)
-with col2:
-    amount_val = st.number_input("Valor da Transação (Amount em $)", min_value=0.0, value=150.0)
+amount_val = st.number_input("Valor da Transação (Amount em $)", min_value=0.0, value=150.0)
 
 st.subheader("Variáveis Vx 1~28")
 st.markdown("(Não obrigatórias, mas quanto mais preenchidas, mais precisa será a predição)")
