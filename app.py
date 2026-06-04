@@ -40,15 +40,13 @@ with st.expander("Clique para inserir as variáveis VXs"):
 #- Executar Predição
 st.markdown("---")
 if st.button("Executar Predição"):
-    #- Organiza os dados
-    dados_entrada = {'Time': time_val}
+    dados_entrada = {}
     dados_entrada.update(v_inputs)
     dados_entrada['Amount'] = amount_val
     
     df_input = pd.DataFrame([dados_entrada])
     
-    #- Garante ordem das colunas correta (Time, V1~V28, Amount)
-    ordem_correta = ['Time'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
+    ordem_correta = [f'V{i}' for i in range(1, 29)] + ['Amount']
     df_input = df_input[ordem_correta]
     
     #- Seta o threshold do colab, para classificar como fraude ou não 
@@ -59,7 +57,7 @@ if st.button("Executar Predição"):
         proba_fraude = modelo.predict_proba(df_input)[0][1]
         
         #- Exibição dos Resultados
-        st.header("Resultado Finais:")
+        st.header("Resultados Finais:")
         if proba_fraude >= threshold:
             st.error(f"* Comportamento anormal, probabilidade de fraude: {proba_fraude:.2%}")
             st.write("(Comportamento fora do comum, recomendado bloquear preventivamente e contatar o cliente)")
